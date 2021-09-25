@@ -3,7 +3,7 @@ lock "~> 3.16.0"
 
 set :application, "cp-tutorial"
 set :repo_url, "git@github.com:TetsuyaAzami/cp-tutorial.git"
-
+set :branch, ENV['BRANCH'] || "main"
 # Default branch is :master
 # ask :branch, `git rev-cparse --abbrev-ref HEAD`.chomp
 
@@ -37,3 +37,7 @@ set :deploy_to, "/var/www/cp-tutorial"
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+set :rbenv_type, :user
+set :rbenv_ruby, '2.6.7'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} #{fetch(:rbenv_path)}/bin/rbenv exec"
